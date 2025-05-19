@@ -3,56 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cute Interactive Website 🎀</title>
+    <title>5 Reasons to Date Me 💖</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="hearts">
-            ❤️❤️❤️
-        </div>
-    </div>
-
     <!-- Music Player -->
     <div class="music-player">
         <button id="music-btn" class="music-btn">
             <i class="fas fa-music"></i>
         </button>
         <audio id="bg-music" loop>
-            <source src="cute-music.mp3" type="audio/mpeg">
+            <source src="love-song.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <header class="header">
-            <h1>Welcome to Cute World! 🌸</h1>
-            <div class="animated-bounce">🐰</div>
-        </header>
+    <!-- Slides Container -->
+    <div class="slides-container">
+        <!-- Slide 1 -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-number">1</div>
+            <h1>I'll Make You Laugh Everyday 😂</h1>
+            <p>With my collection of terrible dad jokes and silly dances</p>
+            <div class="emoji-bounce">🤣</div>
+        </div>
 
-        <main class="content">
-            <section class="card" id="card1">
-                <h2>Sweet Messages 💌</h2>
-                <button class="cute-btn" id="message-btn">Click for Surprise!</button>
-                <div id="secret-message"></div>
-            </section>
+        <!-- Slide 2 -->
+        <div class="slide" data-slide="2">
+            <div class="slide-number">2</div>
+            <h1>Professional Cuddle Partner 🥰</h1>
+            <p>24/7 snuggles with bonus head scratches included</p>
+            <div class="emoji-bounce">🤗</div>
+        </div>
 
-            <section class="card" id="card2">
-                <h2>Adorable Gallery 🖼️</h2>
-                <div class="gallery">
-                    <img src="https://place-holder.com/100x100" alt="cute1" class="gallery-img">
-                    <img src="https://place-holder.com/100x100" alt="cute2" class="gallery-img">
-                    <img src="https://place-holder.com/100x100" alt="cute3" class="gallery-img">
-                </div>
-            </section>
-        </main>
+        <!-- Slide 3 -->
+        <div class="slide" data-slide="3">
+            <div class="slide-number">3</div>
+            <h1>Your Biggest Cheerleader 💪</h1>
+            <p>I'll support your dreams louder than anyone else!</p>
+            <div class="emoji-bounce">🎉</div>
+        </div>
 
-        <footer class="footer">
-            <p>Made with ❤️ by Your Name</p>
-        </footer>
+        <!-- Slide 4 -->
+        <div class="slide" data-slide="4">
+            <div class="slide-number">4</div>
+            <h1>Adventure Buddy 🌍</h1>
+            <p>From Netflix marathons to spontaneous road trips</p>
+            <div class="emoji-bounce">🚀</div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide" data-slide="5">
+            <div class="slide-number">5</div>
+            <h1>Unconditional Love 💞</h1>
+            <p>I'll cherish every version of you - always and forever</p>
+            <button class="cta-btn">Be Mine? ❤️</button>
+            <div class="emoji-bounce">🌸</div>
+        </div>
     </div>
+
+    <!-- Navigation -->
+    <div class="slide-nav">
+        <button class="nav-btn prev-btn">←</button>
+        <div class="dots-container"></div>
+        <button class="nav-btn next-btn">→</button>
+    </div>
+
+    <!-- Floating Hearts Container -->
+    <div class="hearts-container"></div>
 
     <script src="script.js"></script>
 </body>
