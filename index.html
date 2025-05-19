@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Interactive Website 🎀</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="hearts">
+            ❤️❤️❤️
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button id="music-btn" class="music-btn">
+            <i class="fas fa-music"></i>
+        </button>
+        <audio id="bg-music" loop>
+            <source src="cute-music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header class="header">
+            <h1>Welcome to Cute World! 🌸</h1>
+            <div class="animated-bounce">🐰</div>
+        </header>
+
+        <main class="content">
+            <section class="card" id="card1">
+                <h2>Sweet Messages 💌</h2>
+                <button class="cute-btn" id="message-btn">Click for Surprise!</button>
+                <div id="secret-message"></div>
+            </section>
+
+            <section class="card" id="card2">
+                <h2>Adorable Gallery 🖼️</h2>
+                <div class="gallery">
+                    <img src="https://place-holder.com/100x100" alt="cute1" class="gallery-img">
+                    <img src="https://place-holder.com/100x100" alt="cute2" class="gallery-img">
+                    <img src="https://place-holder.com/100x100" alt="cute3" class="gallery-img">
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Made with ❤️ by Your Name</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
