@@ -1,13 +1,3 @@
-// Preloader
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.querySelector('.preloader').style.opacity = '0';
-        setTimeout(() => {
-            document.querySelector('.preloader').style.display = 'none';
-        }, 500);
-    }, 2000);
-});
-
 // Music Player
 const musicBtn = document.getElementById('music-btn');
 const bgMusic = document.getElementById('bg-music');
@@ -20,59 +10,64 @@ musicBtn.addEventListener('click', () => {
     isPlaying ? bgMusic.play() : bgMusic.pause();
 });
 
-// Card Animations
-const cards = document.querySelectorAll('.card');
+// Slide Logic
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.querySelector('.dots-container');
 
-const cardObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, { threshold: 0.5 });
-
-cards.forEach(card => cardObserver.observe(card));
-
-// Interactive Elements
-document.getElementById('message-btn').addEventListener('click', () => {
-    const messages = [
-        "You're awesome! 🌟",
-        "Have a magical day! ✨",
-        "You're doing great! 💪",
-        "Stay pawsitive! 🐾",
-        "You're purr-fect! 😻"
-    ];
-    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-    document.getElementById('secret-message').innerHTML = `
-        <div class="message-bubble">${randomMsg}</div>
-    `;
+// Create dots
+slides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if(index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsContainer.appendChild(dot);
 });
 
-// Floating Hearts Effect
-document.addEventListener('click', (e) => {
-    const heart = document.createElement('div');
-    heart.className = 'float-heart';
-    heart.innerHTML = '❤️';
-    heart.style.left = `${e.clientX}px`;
-    heart.style.top = `${e.clientY}px`;
-    document.body.appendChild(heart);
+const dots = document.querySelectorAll('.dot');
+
+function goToSlide(slideIndex) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
     
-    setTimeout(() => heart.remove(), 2000);
+    currentSlide = (slideIndex + slides.length) % slides.length;
+    
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+// Navigation
+document.querySelector('.prev-btn').addEventListener('click', () => {
+    goToSlide(currentSlide - 1);
+    createHearts();
 });
 
-// Add confetti effect
-function createConfetti() {
-    for(let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animation = `float ${Math.random() * 3 + 2}s linear`;
-        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 50%)`;
-        document.body.appendChild(confetti);
+document.querySelector('.next-btn').addEventListener('click', () => {
+    goToSlide(currentSlide + 1);
+    createHearts();
+});
+
+// Heart Animation
+function createHearts() {
+    for(let i = 0; i < 5; i++) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.querySelector('.hearts-container').appendChild(heart);
         
-        setTimeout(() => confetti.remove(), 5000);
+        setTimeout(() => heart.remove(), 3000);
     }
 }
 
-// Initialize
-document.querySelector('.cute-btn').addEventListener('click', createConfetti);
+// CTA Button
+document.querySelector('.cta-btn')?.addEventListener('click', () => {
+    alert("Yay! 🎉 Let's create beautiful memories together!");
+    for(let i = 0; i < 50; i++) {
+        setTimeout(createHearts, i * 50);
+    }
+});
+
+// Auto-create some hearts
+setInterval(createHearts, 3000);
